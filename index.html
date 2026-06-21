@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet">
+    <title> The Trend Loft </title>
+    <script src="js/script.js" defer></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const moreButton = document.querySelectorAll(".more-btn");
+        const hiddenProducts = document.querySelectorAll(".hiddenProduct");
+
+        moreButton.forEach((button, index) => {
+            button.addEventListener("click", () => {
+                if (hiddenProducts[index]) {
+                    hiddenProducts[index].style.display = "block";
+                }
+                button.style.display = "none";
+            });
+        });
+
+        const customerData = [
+            {
+                name: "Layan Alhowaimel",
+                product: "Rene Caovilla 2003 Heels",
+                rating: 5,
+                feedback: "They are super stylish and comfortable for stilettos."
+            },
+            {
+                name: "Norah Aljayan",
+                product: "Rene Caovilla 2003 Heels",
+                rating: 5,
+                feedback: "Perfect balance between fashion and comfort."
+            },
+            {
+                name: "Abdulrahman Alkhuzayym",
+                product: "Rene Caovilla 2003 Heels",
+                rating: 5,
+                feedback: "They fit perfectly."
+            }
+        ];
+    
+        const reviews = document.querySelectorAll(".reviews .review");
+    
+        reviews.forEach((review, index) => {
+            const popup = review.querySelector(".reviewpopup");
+            const stars = review.querySelector(".stars");
+    
+            if (customerData[index]) {
+                popup.innerHTML = `
+                    <p><strong>Customer:</strong> ${customerData[index].name}</p>
+                    <p><strong>Product:</strong> ${customerData[index].product}</p>
+                    <p><strong>Rating:</strong> ${customerData[index].rating}</p>
+                    <p><strong>Feedback:</strong> ${customerData[index].feedback}</p>
+                `;
+            }
+    
+            stars.addEventListener("mouseover", () => {
+                popup.style.display = "block";
+            });
+    
+            stars.addEventListener("mouseout", () => {
+                popup.style.display = "none";
+            });
+        });
+    });
+    </script>
+    <style>
+        @media (max-width: 480px) {
+            body { margin: 0; font-family: Arial, sans-serif; line-height: 1.6; }
+            img { max-width: 100%; height: auto; display: block; }
+            #navigation a { font-size: 14px; }
+            .allCategories img { max-width: 120px; }
+            .vision { flex-direction: column; align-items: center; padding: 1em; }
+            .vision img { max-width: 80%; margin: 0 0 1em 0; }
+            #visiondesription { font-size: 0.9em; text-align: center; }
+            .allCategories { flex-direction: column; align-items: center; }
+            .Category { flex: none; width: 100%; }
+            .cbutton { padding: 0.5em; }
+            .reviews, .newproduct, .allProducts { flex-wrap: wrap; justify-content: center; padding: 1em; }
+            .contacts div { display: flex; flex-wrap: wrap; justify-content: space-between; }
+        }
+        img { max-width: 100%; height: auto; display: block; }
+        .userReviews img { width: 5.3em; height: auto; margin: 0.5em 0; }
+        .newproduct { display: flex; align-items: center; padding: 1.25em; position: relative; }
+        .newproduct img { align-self: flex-start; width: 18.75em; height: auto; border-radius: 0.5em; }
+        .productDetails { margin-left: 1.25em; }
+        .productDetails h2 { text-align: start; font-size: 3.125em; color: #333; align-items: center; }
+        .productDetails p { margin-top: 0.625em; margin-right: auto; font-size: 1em; color: #666; }
+        .shopButton { display: inline-block; margin-top: 0.9375em; padding: 0.625em 1.25em; background-color: #6d93aa; color: white; text-decoration: none; font-weight: bold; border-radius: 0.3125em; }
+        .shopButton:hover { background-color: #64989d; }
+        .allCategories { display: flex; justify-content: space-between; padding: 1.25em; max-width: 100px; }
+        .Category { flex: 1; margin: 0 0.625em; text-align: center; }
+        .cbutton { display: block; text-align: center; padding: 3.125em 1.25em; background-color: white; border-radius: 0.625em; width: 25em; max-width: 30em; }
+        .cbutton img { width: 100%; height: auto; border-radius: 0.625em; }
+        .cbutton:hover { background-color: grey; }
+        h2 { text-align: center; font-size: 3.125em; }
+        .onSale { padding: 1.25em; text-align: center; }
+        .allProducts { display: flex; justify-content: space-between; padding: 0 0.625em; }
+        .product { background-color: white; padding: 1.25em; border: 0.0625em solid #ddd; border-radius: 0.625em; width: 30%; text-align: center; }
+        .product h3 { font-size: 1.25em; margin-bottom: 0.625em; }
+        .product p { font-size: 1em; color: #666; margin-bottom: 0.9375em; }
+        .product img { width: 100%; height: auto; border-radius: 0.625em; margin-bottom: 0.9375em; max-height: 31.25em; }
+        .reviews { display: flex; justify-content: space-between; align-items: flex-start; padding: 2.5em; }
+        .productReviewed h3 { margin-top: 0.9375em; font-size: 1.25em; text-align: center; }
+        .productReviewed img { flex: 1; max-width: 18.75em; height: auto; border-radius: 0.625em; }
+        .userReviews q { font-style: italic; font-size: 1em; color: #555; display: block; }
+        .userReviews p { font-size: 0.875em; font-weight: bold; color: #333; margin: 3em 0; }
+        .vision { display: flex; justify-content: flex-start; align-items: center; padding: 1em; }
+        .vision img { max-width: 31.25em; height: auto; margin-right: 1.25em; }
+        .visiontext { flex: 1; }
+        #visionheader { font-size: 3.125em; margin-bottom: 1.25em; width: 100%; text-align: center; }
+        #visiondesription { line-height: 1.5em; font-size: 0.9em; margin-top: 0; font-family: 'Times New Roman', Times, serif; }
+        .reviewpopup { position: absolute; background: #ffffff; border: 1px solid #ccc; padding: 10px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); z-index: 10; width: 250px; font-size: 14px; line-height: 1.5; color: #333; border-radius: 5px; top: 100%; left: 0; display: none; }
+        .reviewpopup p { margin: 5px 0; }
+        .review { position: relative; }
+        #navigation { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 10px; }
+        #leftnav, #rightnav { display: flex; flex-wrap: wrap; gap: 10px; }
+        #leftnav img { max-width: 120px; }
+        #rightnav input { flex: 1; max-width: 200px; }
+        .more-btn { display: inline-block; padding: 0.5em 1em; margin-top: 0.625em; background-color: #6d93aa; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 0.875em; }
+        .more-btn:hover { background-color: #64989d; }
+        .hiddenProduct { background-color: white; padding: 1.25em; border: 0.0625em solid #ddd; border-radius: 0.625em; width: 30%; text-align: center; }
+        .hiddenProduct h3 { font-size: 1.25em; margin-bottom: 0.625em; }
+        .hiddenProduct p { font-size: 1em; color: #666; margin-bottom: 0.9375em; }
+        .hiddenProduct img { width: 100%; height: auto; border-radius: 0.625em; margin-bottom: 0.9375em; max-height: 31.25em; }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>The Trend Loft</h1>
+        <div id="navigation">
+            <div id="leftnav">
+                <a href="index.html"><img id="logo" src="images/logo2.png" alt="The Trend Loft Logo"></a>
+                <p><a href="category2.html">Clothes</a></p>
+                <p><a href="category\.html">Bags</a></p>
+                <p><a href="category1.html">Shoes</a></p>
+            </div>
+            <div id="rightnav">
+                <input id="search" type="text" placeholder="Search...">
+                <div class="user">
+                    <p>Welcome, <br> Sara <img src="images/arrow-down.png" alt="arrow down icon" class="user-arrow-icon"></p>
+                    <div class="user-menu">
+                        <a href="userpage\.html">Your Account</a><br><br>
+                        <a href="sellerdashboardpage\.html">Your Seller Account</a>
+                    </div>
+                </div>
+                <div class="forcart">
+                    <a href="cartpage.html"><img id="cart-img" src="images/cart.png" alt="cart"></a>
+                    <div class="theme-toggle">
+                        <img id="theme-icon" src="images/theme-toggle1.png" alt="Theme Toggle">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div id="date"> </div>
+        <script>
+            var now = new Date();
+            var firstDay = new Date(now.setDate((now.getDate() - now.getDay())));
+            var options = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
+            let finalDate = firstDay.toLocaleString(undefined, options);
+            document.getElementById("date").textContent = finalDate;
+        </script>
+        <section>
+            <div class="newproduct">
+                <img src="images/birkin.png" alt="New Product">
+                <div class="productDetails">
+                    <h2> New Product! </h2>
+                    <p>All new Birkin is available in a rare heritage leather with unique character.</p>
+                    <a href="category\.html" class="shopButton">Shop Now</a>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2> Shop By Category </h2>
+            <div class="allCategories">
+                <div class="Category">
+                    <a class="cbutton" href="category2.html"><img src="images/dressc.png" alt="clothes"> </a>
+                </div>
+                <div class="Category">
+                    <a class="cbutton" href="category\.html"><img src="images/chanel.png" alt="bags"></a>
+                </div>
+                <div class="Category">
+                    <a class="cbutton" href="category1.html"><img src="images/shoesc.png" alt="shoes"></a>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="onSale">
+                <h2> On Sale Must Haves</h2>
+                <div class="allProducts">
+                    <div class="product">
+                        <img src="images/product1.png" alt="Brown bag">
+                        <h3> Bottega Veneta Arco Tote Bag</h3>
+                        <p> One of the most timeless leather bags from 1990 collection. <br> 100% authentic and in perfect condition </p>
+                        <a href="category\.html" class="shopButton"> Shop Now</a>
+                    </div>
+                    <div class="product">
+                        <img src="images/product2.png" alt="Black leather boots">
+                        <h3> Givenchy Leather Boots in Black</h3>
+                        <p> Slip on durable leather boots from 2001 collection <br> 100% authentic and in mint condition </p>
+                        <a href="category1.html" class="shopButton"> Shop Now </a>
+                    </div>
+                    <div class="product">
+                        <img src="images/product3.png" alt="shoulder bag with logo">
+                        <h3> Dior Shoulder Bag </h3>
+                        <p> Classic canvas shoulder 2005 bag with leather strap <br> 100% authentic in good condition</p> 
+                        <a href="category\.html" class="shopButton"> Shop Now </a>
+                    </div>
+                    <div class="hiddenProduct" style="display:none;">
+                        <img src="images/hiddenbag.jpeg" alt="grey Balenciaga bag">
+                        <h3> Balenciaga City Bag</h3>
+                        <p> Grained Calfskin Neo Classic Silver Hardware S City Dark Grey </p>
+                        <a href="category\.html" class="shopButton"> Shop Now </a>
+                    </div>
+                    <button class="more-btn">More</button>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2> Customers Loved.... </h2>
+            <div class="reviews">
+                <div class="productReviewed">
+                    <img src="images/productreviewed.png" alt="vintage heel">
+                    <a href="category1.html" style="text-decoration: none; color:#9fb8af;">
+                        <h3> Rene Caovilla 2003 Heels </h3>
+                    </a>
+                </div>
+                <div class="review">
+                    <img class="stars" src="images/5stars.png" alt="5 star rating">
+                    <q> These heels are a dream! They are super stylish and surprisingly comfortable for stilettos. </q>
+                    <div class="reviewpopup" style="display: none;"></div>
+                </div>
+                <div class="review">
+                    <img class="stars" src="images/5stars.png" alt="5 star rating">
+                    <q> These heels are amazing! They give me the height I want without discomfort. Perfect balance between fashion and comfort. </q>
+                    <div class="reviewpopup" style="display: none;"></div>
+                </div>
+                <div class="review">
+                    <img class="stars" src="images/5stars.png" alt="5 star rating">
+                    <q> Bought these for my wife, and she loves them. They fit her perfectly, and she says they’re quite comfy for high heels. </q>
+                    <div class="reviewpopup" style="display: none;"></div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="onSale">
+                <h2> Last Chance Sale </h2>
+                <div class="allProducts">
+                    <div class="product">
+                        <img src="images/dress2.png" alt="Midi green and white dress">
+                        <h3> Misha Satin Dress </h3>
+                        <p> Mint and White Slip On Dress from 1994 collection <br> 100% authentic and in perfect condition</p>
+                        <a href="category2.html" class="shopButton"> Shop Now</a>
+                    </div>
+                    <div class="product">
+                        <img src="images/bag2.jpeg" alt="large brown tote bag">
+                        <h3> Saint Laurent Brown Tote </h3>
+                        <p> Chic leather bag from 1996 collection <br> 100% authentic and in mint condition </p>
+                        <a href="category\.html" class="shopButton"> Shop Now </a>
+                    </div>
+                    <div class="product">
+                        <img src="images/shirt.png" alt="black jacket with buttons">
+                        <h3> Chanel Velour Shirt </h3>
+                        <p> Limited edition black shirt from 1980 collection <br> 100% authentic and in good condition </p>
+                        <a href="category2.html" class="shopButton"> Shop Now </a>
+                    </div>
+                    <div class="hiddenProduct" style="display:none;">
+                        <img src="images/hiddenshoe.jpeg" alt="Black Leather Shoe">
+                        <h3> Gucci Princetown Mules</h3>
+                        <p> Black leather with signature horseshoe <br> 100% authentic and in perfect condition</p>
+                        <a href="category1.html" class="shopButton"> Shop Now </a>
+                    </div>
+                    <button class="more-btn">More</button>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2> Our Vision </h2>
+            <div class="vision">
+                <img src="images/vision2.png" alt="There is no planet B">
+                <div class="visionText">
+                    <p id="visiondesription"> Our mission is to reinvent luxury by presenting a sustainable, luxurious future in which fashion and responsibility go hand in hand. To prolong the life of luxury pieces, We sell high-quality, pre-loved designer items accessible to everyone, eliminating waste and fast fashion while cultivating a community that appreciates elegance and sustainability.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer">
+            <img src="images/logo2.png" id="f-logo" alt="logo">
+            <div class="contacts">
+                <div class="phone">
+                    <img src="images/phone-icon.png" id="phone-icon" alt="phone">
+                    <p>+955XXXXXXXXX</p>
+                </div>
+                <div class="email">
+                    <a href="mailto:TheTrendLoft@gmail.com"> <img src="images/email-icon.png" id="email-icon" alt="email"> </a>
+                    <p>info@example.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>©2024 <strong>The Trend Loft.</strong> All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

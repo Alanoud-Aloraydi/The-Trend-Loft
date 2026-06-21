@@ -1,0 +1,240 @@
+/* Website Main Font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+@font-face {
+    font-family: "Vanity";
+    src:\ url\(\.\./fonts/Vanity-Light\.ttf\);
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+/* Header */
+head {
+    font-family: "Vanity";
+}
+
+/* here */
+h1 {
+    text-align: center;
+}
+
+/* Breadcrumb */
+
+.breadcrumb-links {
+    color: gray;
+}
+
+.breadcrumb {
+    color: gray;
+    margin: 2% 1%;
+}
+
+/* Navigation after update */
+navigation {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f9f9f9;
+    align-items: center;
+    padding: 1em 2em;
+}
+
+
+.user-arrow-icon {
+    margin-left: 0.5em;
+    width: 1em;
+    height: 1em;
+}
+
+#navigation {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f9f9f9;
+    align-items: center;
+}
+
+#leftnav {
+    width: 33%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#leftnav a {
+    text-decoration: none;
+    color: black;
+}
+
+#rightnav {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+#search {
+    height: 1.5em;
+    width: 40%;
+    align-self: center;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-color: gray;
+    border-bottom-width: 0.0625em;
+    background-color: transparent;
+}
+
+#logo {
+    width: 9.375em;
+    height: 1.875em;
+}
+
+#profile-img {
+    width: 2.5em;
+    height: 2.5em;
+    display: flex;
+    align-self: center;
+}
+
+#cart-img {
+    width: 2.5em;
+    height: 2.5em;
+}
+
+.forcart {
+    display: flex;
+    align-items: center;
+}
+
+.user-menu {
+    position: absolute;
+    display: none;
+    background-color: white;
+    width: 6.25em;
+    text-align: left;
+    text-indent: 0.3125em;
+    border-bottom-left-radius: 0.625em;
+    border-bottom-right-radius: 0.625em;
+}
+
+.user-menu a {
+    margin-left: 0.3125em;
+    color: black;
+    text-decoration: none;
+}
+
+.user:hover .user-menu {
+    display: block;
+    width: 9.375em;
+    background-color: #f9f9f9;
+    z-index: 1;
+    border-bottom-left-radius: 8%;
+    border-bottom-right-radius: 8%;
+}
+/*Theme*/
+body.night-mode {
+    background-color: #2C2C2C;
+    color: #ffffff;
+}
+
+.night-mode header, .night-mode footer {
+    background-color: #2C2C2C;
+}
+
+#navigation p, #navigation a {
+    color: #000000;
+}
+
+button.night-mode {
+    background-color: #03A9F4;
+    color: #ffffff;
+}
+
+button.night-mode:hover {
+    background-color: #555555;
+}
+
+a.night-mode {
+    color: #ffffff;
+}
+
+a.night-mode:hover {
+    color: #cccccc;
+}
+
+.user.night-mode p {
+    color: black;
+}
+
+.shadow.night-mode {
+    box-shadow: 0px 0.25em 0.375em rgba(0, 0, 0, 0.5);
+}
+
+.theme-toggle img {
+    width: 2em;
+    height: 2em;
+}
+
+body.night-mode #my-cart,
+body.night-mode #my-orders,
+body.night-mode #product-evaluation {
+    background-color: #333;
+}
+
+body.night-mode .review q {
+    color: white;
+}
+body.night-mode .product h3 {
+	
+    color: black;
+}
+
+body.night-mode .newproduct h2  {
+    color: white;
+}
+
+/* Footer */
+#f-logo {
+    width: 9.375em;
+    height: 1.875em;
+    display: block;
+    margin: auto;
+    margin-top: 5em;
+}
+
+.copyright {
+    background-color: #f9f9f9;
+    height: 2.5em;
+    display: flex;
+    align-items: center;
+    text-indent: 0.625em;
+}
+
+.contacts {
+    width: 33%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+#phone-icon {
+    height: 1.25em;
+    width: 1.25em;
+    margin-right: 0.1875em;
+}
+
+.phone {
+    display: flex;
+    align-items: center;
+}
+
+#email-icon {
+    height: 1.25em;
+    width: 1.25em;
+    margin-right: 0.3125em;
+}
+
+.email {
+    display: flex;
+    align-items: center;
+}
+

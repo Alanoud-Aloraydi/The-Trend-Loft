@@ -1,0 +1,582 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reivew orders</title>
+    <link rel="stylesheet" href="css/style\.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    <script src="js/script\.js" defer></script>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+        @font-face {
+            font-family: "Vanity";
+            src:\ url\(\.\./fonts/Vanity-Light\.ttf\);
+        }
+
+        /* Header */
+        head {
+            font-family: "Vanity";
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb-links {
+            color: gray;
+        }
+
+        .breadcrumb {
+            color: gray;
+            margin: 2% 1%;
+        }
+
+        navigation {
+            display: flex;
+            justify-content: space-between;
+            background-color: #f9f9f9;
+            align-items: center;
+            padding: 0.625em 1.25em;
+        }
+
+        .user-arrow-icon {
+            margin-left: 0.3em;
+            width: 0.625em;
+            height: 0.625em;
+        }
+
+        #navigation {
+            display: flex;
+            justify-content: space-between;
+            background-color: #f9f9f9;
+            align-items: center;
+        }
+
+        #leftnav {
+            width: 33%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        #rightnav {
+            width: 30%;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        #search {
+            height: 1.6em;
+            width: 40%;
+            align-self: center;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-bottom: 0.063em solid gray;
+            background-color: transparent;
+        }
+
+        #logo {
+            width: 9.375em;
+            height: 1.875em;
+        }
+
+        #profile-img,
+        #cart-img {
+            width: 2.5em;
+            height: 2.5em;
+            display: flex;
+            align-self: center;
+        }
+
+        .forcart {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-menu {
+            position: absolute;
+            display: none;
+            background-color: white;
+            width: 6.25em;
+            text-align: left;
+            text-indent: 0.3em;
+            border-bottom-left-radius: 0.625em;
+            border-bottom-right-radius: 0.625em;
+        }
+
+        .user-menu a {
+            margin-left: 0.3em;
+            color: black;
+            text-decoration: none;
+        }
+
+        .user:hover .user-menu {
+            display: block;
+            width: 9.375em;
+            background-color: #f9f9f9;
+            z-index: 1;
+            border-bottom-left-radius: 8%;
+            border-bottom-right-radius: 8%;
+        }
+
+        .products {
+            display: flex;
+            justify-content: center;
+        }
+
+        /* REVIEW ORDER */
+        .review-order {
+            padding: 1.25em;
+            margin: 2% 1%;
+        }
+
+        .review-order h1 {
+            font-size: 1.5em;
+            margin-bottom: 0.625em;
+        }
+
+        .order-number {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #fff;
+            padding: 0.625em;
+            border: 0.063em solid #ccc;
+            border-radius: 0.313em;
+        }
+
+        .order-number select {
+            padding: 0.3em;
+        }
+
+        .products {
+            display: flex;
+            flex-direction: column;
+            margin: 2% 1%;
+        }
+
+        .product-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #fff;
+            padding: 1.25em;
+            margin-bottom: 0.625em;
+            border-radius: 0.313em;
+            border: 0.063em solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .product-item img {
+            width: 5em;
+            height: 5em;
+            margin-right: 1.25em;
+        }
+
+        .product-details {
+            flex-grow: 1;
+        }
+
+         /*  .review-btn {
+            display: flex;
+            justify-content: flex-start;
+            background-color: #6d93aa;
+            color: #fff;
+            padding: 0.625em 1.875em;
+            border: none;
+            border-radius: 0.313em;
+        } */
+
+       /* .review-btn:hover {
+            background-color: #6d93aa;
+        }  */
+         
+         .review-btn {
+            display: flex;
+            justify-content: flex-start;
+            color: #fff;
+            padding: 0.5em 1em;
+            border: none;
+            }
+        .button {
+            display: flex;
+            flex-direction: column;
+            justify-content: right;
+        } 
+
+
+          /* .review-btn:hover {
+            background-color: #64989d;
+        } */
+
+
+        #Stars1 {
+            display: flex;
+            flex-direction: column;
+            justify-content: right;
+            width: 10%;
+            height: 30%;
+        }
+        #Stars2{
+            display: flex;
+            flex-direction: column;
+            justify-content: right;
+            width: 10%;
+            height: 30%;  
+        }
+        .stars1 i {
+    color: #e6e6e6;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.stars1 i.active {
+    color: #ff9c1a;
+}
+.stars2 i {
+    color: #e6e6e6;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.stars2 i.active {
+    color: #ff9c1a;
+}
+.stars3 i {
+    color: #e6e6e6;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.stars3 i.active {
+    color: #ff9c1a;
+}
+.stars4 i {
+    color: #e6e6e6;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.stars4 i.active {
+    color: #ff9c1a;
+}
+
+
+    </style>
+</head>
+<body>
+    <h1>The Trend Loft</h1>
+    <header>
+        <div id="navigation">
+            <div id="leftnav">
+                <a href="index.html"><img id="logo" src="images/logo2.png" alt="The Trend Loft Logo"></a>
+                <p><a href="category2.html">Clothes</a></p>
+                <p><a href="category\.html">Bags</a></p>
+                <p><a href="category1.html">Shoes</a></p>
+            </div>
+            <div id="rightnav">
+                <input id="search" type="text" placeholder="Search...">
+                <div class="user">
+                    <p>Welcome, <br> Sara</p>
+                </div>
+                <div class="forcart">
+                    <a href="cartpage.html"><img id="cart-img" src="images/cart.png" alt="Cart"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumbs -->
+    <div class="breadcrumb">
+        <p><a href="index.html" class="breadcrumb-links">Home</a> &raquo; <a href="userpage\.html"
+                class="breadcrumb-links">User page</a> &raquo; Order review</p>
+    </div>
+
+    <main>
+        <section class="review-order">
+            <h2>Review your order</h2>
+            <div class="order-number">
+                <h2>#Order number</h2>
+                <select name="orders" id="order-select">
+                    <option value="order1">Order #001</option>
+                </select>
+            </div>
+                <div class="products">
+                <!-- ORDER 1-->
+                    <div class="order-details" id="order1-details">
+                    <div class="product-item">
+                        <img src="images/miumiu-bag.png" alt="Miu miu leather black and gold bag">
+                        <div class="product-details">
+                            <h3>Miu miu</h3>
+                            <p> Mini Arcadie Top-handle Bag in Matelassé Nappa </p>
+                        </div>
+                        <div class="rating-box" id="Stars1">
+                            <div class="stars1">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                        <form id="reviewForm1">
+                            <label for="review">Write Review</label>
+                            <input id="review1" type="text" placeholder="Write your review here">
+                            <div class="button">
+                                <div class="review-btn">
+                                    <input type="submit" value="Submit Review">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+    
+                    <div class="product-item">
+                        <img src="images/loewe-bag.png" alt="Brown loewe bag">
+                        <div class="product-details">
+                            <h4>Loewe</h4>
+                            <p>Mini Puzzle Bag in Classic Calfskin </p>
+                        </div>
+                        <div class="rating-box" id="Stars2">
+                            <div class="stars2">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                        <form id="reviewForm2">
+                            <label for="review">Write Review</label>
+                            <input id="review2" type="text" placeholder="Write your review here">
+                            <div class="button">
+                                <div class="review-btn">
+                                    <input type="submit" value="Submit Review">
+                                </div>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                        <div class="order-details" id="order2-details" >
+                             <!-- ORDER 2
+                            <div class="product-item">
+                                <img src="images/hermes-bag.png" alt="Kelly wallet pink">
+                                <div class="product-details">
+                                    <h4>Hermès</h4>
+                                    <p>Kelly To Go Wallet in Epsom Leather</p>
+                                </div>
+                                <div class="rating-box" id="Stars3">
+                                    <div class="stars3">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                </div>
+                                <form id="reviewForm3">
+                                    <label for="review">Write Review</label>
+                                    <input id="review3" type="text" placeholder="Write your review here">
+                                    <div class="button">
+                                        <div class="review-btn">
+                                            <input type="submit" value="Submit Review">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="product-item">
+                                <img src="images/loewe-bag.png" alt="Brown loewe bag">
+                                <div class="product-details">
+                                    <h4>Loewe</h4>
+                                    <p>Mini Puzzle Bag in Classic Calfskin </p>
+                                </div>
+                                <div class="rating-box" id="Stars4">
+                                    <div class="stars4">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                </div>
+                                <form id="reviewForm4">
+                                    <label for="review">Write Review</label>
+                                    <input id="review4" type="text" placeholder="Write your review here">
+                                    <div class="button">
+                                        <div class="review-btn">
+                                            <input type="submit" value="Submit Review">
+                                        </div>
+                                    </div>
+                                </form>
+                                </div>
+                                </div>
+                                </div>  -->
+                                 <!-- <div class="order-details" id="order3-details"> -->
+                                  <!--Order 3-->
+                                  <!--
+                                  
+                                    <div class="product-item">
+                                        <img src="images/Chanel-bag.png" alt="Chanel pink bag">
+                                        <div class="product-details">
+                                            <div class="product-info">
+                                                <h4>Chanel</h4>
+                                                <p>Medium Double Flap Bag in Quilted Lambskin Leather </p>
+                                        </div></div>
+                                        <div class="rating-box" id="Stars5">
+                                            <div class="stars5">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <form id="reviewForm4">
+                                            <label for="review">Write Review</label>
+                                            <input id="review1" type="text" placeholder="Write your review here">
+                                            <div class="button">
+                                                <div class="review-btn">
+                                                    <input type="submit" value="Submit Review">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    </div>
+                                    </div>
+                                <div class="order-details" id="order4-details">
+                                    order 4
+                                <div class="product-item">
+                                    <img src="images/miumiu-bag.png" alt="Miu miu leather black and gold bag">
+                                    <div class="product-details">
+                                        <h3>Miu miu</h3>
+                                        <p> Mini Arcadie Top-handle Bag in Matelassé Nappa </p>
+                                    </div>
+                                    <div class="rating-box" id="Stars6">
+                                        <div class="stars6">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <form id="reviewForm5">
+                                        <label for="review">Write Review</label>
+                                        <input id="review1" type="text" placeholder="Write your review here">
+                                        <div class="button">
+                                            <div class="review-btn">
+                                                <input type="submit" value="Submit Review">
+                                            </div>
+                                        </div>
+                                    </form>
+                                    </div>
+                                <div class="product-item">
+                                    <img src="images/loewe-bag.png" alt="Brown loewe bag">
+                                    <div class="product-details">
+                                        <h4>Loewe</h4>
+                                        <p>Mini Puzzle Bag in Classic Calfskin </p>
+                                    </div>
+                                    <div class="rating-box" id="Stars7">
+                                        <div class="stars7">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <form id="reviewForm6">
+                                        <label for="review">Write Review</label>
+                                        <input id="review2" type="text" placeholder="Write your review here">
+                                        <div class="button">
+                                            <div class="review-btn">
+                                                <input type="submit" value="Submit Review">
+                                            </div>
+                                        </div>
+                                    
+                                    </form>
+                                    </div>
+                                    </div>
+                                <div class="order-details" id="order4-details">
+        order 4
+                                    <div class="product-item">
+                                        <img src="images/miumiu-bag.png" alt="Miu miu leather black and gold bag">
+                                        <div class="product-details">
+                                            <h3>Miu miu</h3>
+                                            <p> Mini Arcadie Top-handle Bag in Matelassé Nappa </p>
+                                        </div>
+                                        <div class="rating-box" id="Stars8">
+                                            <div class="stars8">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <form id="reviewForm7">
+                                            <label for="review">Write Review</label>
+                                            <input id="review1" type="text" placeholder="Write your review here">
+                                            <div class="button">
+                                                <div class="review-btn">
+                                                    <input type="submit" value="Submit Review">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    </div>
+                                    <div class="order-details" id="order5-details" >
+                                       Order 5
+                                    <div class="product-item">
+                                        <img src="images/loewe-bag.png" alt="Brown loewe bag">
+                                        <div class="product-details">
+                                            <h4>Loewe</h4>
+                                            <p>Mini Puzzle Bag in Classic Calfskin </p>
+                                        </div>
+                                        <div class="rating-box" id="Stars9">
+                                            <div class="stars9">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <form id="reviewForm8">
+                                            <label for="review">Write Review</label>
+                                            <input id="review2" type="text" placeholder="Write your review here">
+                                            <div class="button">
+                                                <div class="review-btn">
+                                                    <input type="submit" value="Submit Review">
+                                                </div>
+                                            </div>
+                                        </form>
+                                  </div>
+                                  </div>
+                                  </div> -->
+                                </main> 
+                    
+            </section>
+    <!-- Footer -->
+    <footer>
+        <div class="footer">
+            <img src="images/logo2.png" id="f-logo" alt="logo">
+            <div class="contacts">
+                <div class="phone">
+                    <img src="images/phone-icon.png" id="phone-icon" alt="phone">
+                    <p>+955XXXXXXXXX</p>
+                </div>
+                <div class="email">
+                    <a href="mailto:TheTrendLoft@gmail.com"> <img src="images/email-icon.png" id="email-icon" alt="email"> </a>
+                    <p>info@example.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>©2024 <strong>The Trend Loft.</strong> All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
