@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Product Category - Shoes</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        h1 { text-align: center; padding: 0.625em; }
+        #navigation { display: flex; justify-content: space-between; background-color: #f9f9f9; align-items: center; padding: 0.625em 1.25em; }
+        #leftnav { width: 33%; display: flex; justify-content: space-around; align-items: center; }
+        #rightnav { width: 30%; display: flex; justify-content: space-between; align-items: center; }
+        #search { height: 1.6em; padding: 0.3em; }
+        #logo, #f-logo { width: 9.375em; height: 1.875em; display: block; margin: auto; }
+        #cart-img, #profile-img { width: 2.5em; height: 2.5em; margin-left: 0.625em; }
+        .forcart { display: flex; align-items: center; }
+        .user-menu { position: absolute; display: none; background-color: lightgray; width: 6.25em; text-align: left; text-indent: 0.3em; border-bottom-left-radius: 0.625em; border-bottom-right-radius: 0.625em; }
+        .user:hover .user-menu { display: block; }
+        .all { display: flex; justify-content: center; }
+        .background { display: flex; justify-content: center; width: 100%; }
+        .product-grid { width: 85%; display: flex; flex-wrap: wrap; justify-content: space-between; padding: 1.25em; }
+        .product-item { width: 30%; margin-bottom: 1.25em; border: 0.063em solid #ccc; border-radius: 0.313em; padding: 1.25em; text-align: center; background-color: #f9f9f9; box-sizing: border-box; }
+        .product-item img { width: 100%; height: auto; }
+        .product-item h4 { margin: 0.625em 0; }
+        .product-item p { color: #666; font-size: 0.875em; }
+        .pagination { width: 20%; display: flex; justify-content: space-between; margin: auto; margin-top: 1.875em; }
+        .pagination a { color: black; text-decoration: none; font-size: 1em; text-align: center; }
+        .pagination a:hover:not(.active) { background-color: #6d93aa; color: white; width: 1.875em; height: 1.875em; display: flex; align-items: center; justify-content: center; }
+        .copyright { background-color: #f9f9f9; height: 2.5em; display: flex; align-items: center; text-indent: 0.625em; }
+        .contacts { width: 33%; margin: auto; display: flex; justify-content: space-around; }
+        #phone-icon, #email-icon { height: 1.25em; width: 1.25em; margin-right: 0.3em; }
+        .phone, .email { display: flex; align-items: center; }
+        .filterbackground { display: flex; justify-content: flex-end; padding: 0.625em 1.25em; }
+        #filter { background-color: #ccc; margin-bottom: 1em; text-align: center; margin-right: 8%; padding: 0.5em; }
+        .cart-icon img { cursor: pointer; width: 2.5em; height: auto; }
+    </style>
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>The Trend Loft</h1>
+        <div id="navigation">
+            <div id="leftnav">
+                <a href="index.html"><img id="logo" src="images/logo2.png" alt="The Trend Loft Logo"></a>
+                <p><a href="category2.html">Clothes</a></p>
+                <p><a href="category\.html">Bags</a></p>
+                <p><a href="category1.html">Shoes</a></p>
+            </div>
+            <div id="rightnav">
+                <input id="search" type="text" placeholder="Search...">
+                <div class="user">
+                    <p>Welcome, <br> Sara <img src="images/arrow-down.png" alt="arrow down icon" class="user-arrow-icon"></p>
+                    <div class="user-menu">
+                        <a href="userpage\.html">Your Account</a><br><br>
+                        <a href="sellerdashboardpage\.html">Your Seller Account</a>
+                    </div>
+                </div>
+                <div class="forcart">
+                    <a href="cartpage.html"><img id="cart-img" src="images/cart.png" alt="Cart"></a>
+                </div>
+            </div>
+        </div>
+        <div class="breadcrumb">
+            <p><a href="index.html" class="breadcrumb-links">Home</a> &raquo; Shoes</p>
+        </div>
+    </header>
+
+    <div class="filterbackground">
+        <select name="filter" id="filter">
+            <optgroup label="Price">
+                <option value="order2">Highest to Lowest</option>
+                <option value="order3">Lowest to Highest</option>
+            </optgroup>
+            <optgroup label="Alphabetical order">
+                <option value="A to Z">A to Z</option>
+                <option value="Z to A">Z to A</option>
+            </optgroup>
+        </select>
+    </div>
+
+    <div class="all">
+        <div class="background">
+            <div class="product-grid">
+                <div class="product-item">
+                    <img src="images/product2.png" alt="Givenchy Boots">
+                    <h4>Givenchy</h4>
+                    <p>Leather Boots in Black<br> 9800SR </p>
+                    <div class="cart-icon"><img src="images/cart.png" alt="cart"></div>
+                </div>
+                <div class="product-item">
+                    <img src="images/productreviewed.png" alt="Rene Caovilla Heels">
+                    <h4>Rene Caovilla</h4>
+                    <p>2003 Vintage Crystal-embellished Strass Heels<br> 12000SR </p>
+                    <div class="cart-icon"><img src="images/cart.png" alt="cart"></div>
+                </div>
+                <div class="product-item">
+                    <img src="images/tomford.png" alt="Tom Ford Sandals">
+                    <h4>Tom ford</h4>
+                    <p>Naked 105 Padlock Sandals in Laminated Leather<br> 6750SR </p>
+                    <div class="cart-icon"><img src="images/cart.png" alt="cart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="pagination">
+        <a href="">&laquo;</a>
+        <a href="">1</a>
+        <a href="">2</a>
+        <a href="">&raquo;</a>
+    </div>
+
+    <footer>
+        <div class="footer">
+            <img src="images/logo2.png" id="f-logo" alt="logo">
+            <div class="contacts">
+                <div class="phone">
+                    <img src="images/phone-icon.png" id="phone-icon" alt="phone">
+                    <p>+955XXXXXXXXX</p>
+                </div>
+                <div class="email">
+                    <a href="mailto:TheTrendLoft@gmail.com"> <img src="images/email-icon.png" id="email-icon" alt="email"> </a>
+                    <p>info@example.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>©2024 <strong>The Trend Loft.</strong> All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,768 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cart</title>
+    <link href="css/style\.css" rel="stylesheet">
+    <style>
+        /* Main Content */
+
+        .main-content {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-around;
+        }
+
+        .page-title {
+            margin-left: 0.6em;
+        }
+
+        /* Order Summary */
+
+        .order-summary {
+            width: 30%;
+        }
+
+        #discountbox {
+            width: 24em;
+            height: 2.5em;
+            flex: 1;
+        }
+
+        .discount {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        #apply {
+            width: 5.5em;
+            background-color: #6d93aa;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 0.2em;
+            border-color: transparent;
+            margin-left: 0.2em;
+        }
+
+        .s-details {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #checkout {
+            width: 100%;
+            padding: 0.8em;
+            background-color: #6d93aa;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 0.35em;
+            border-color: transparent;
+        }
+
+        /* Cart */
+
+        #cart {
+            width: 60%;
+            margin-top: 0.8em;
+        }
+
+        .cart-category {
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: space-around;
+            background-color: #f9f9f9;
+            color: black;
+            font-size: 1.1em;
+        }
+
+        #product {
+            width: 30%;
+            text-align: left;
+            text-indent: 1.2em;
+        }
+
+        .others {
+            width: 20%;
+        }
+
+        .cart-category p {
+            text-align: center;
+        }
+
+
+
+        /* --------------------------------------------------------------------------- */
+
+
+        /* Cart Items */
+
+        .item {
+            flex: 1;
+        }
+
+        .item-details {
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: space-around;
+            flex: 1;
+            align-items: center;
+        }
+
+        .item-others {
+            width: 20%;
+            text-align: center;
+        }
+
+        .product-detail {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            width: 30%;
+            text-align: left;
+        }
+
+        .item-img {
+            width: 6.25em;
+            max-height: 18em;
+            margin-right: 1.2em;
+        }
+
+        .remove {
+            width: 5%;
+        }
+
+        .remove-button {
+            border: none;
+            background-color: transparent;
+            text-decoration: underline;
+            font-size: 1.1em;
+        }
+
+        .item-name {
+            font-weight: bold;
+        }
+
+        .counter {
+            display: flex;
+            justify-content: center;
+        }
+
+        .quantity {
+            text-align: center;
+            border: solid #ddd;
+            border-radius: 0.25em;
+            width: 2.5em;
+        }
+
+        .operation {
+            width: 2em;
+            height: 2.2em;
+            background: #f2f2f2;
+            border-radius: 0.25em;
+            border: solid #ddd;
+            display: inline-block;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+
+        /* --------------------------------------------------------------------------- */
+
+        /* Buttons */
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            color: white;
+            margin-top: 3%;
+        }
+
+        .button-design {
+            padding: 0.6em 1em;
+            background-color: #6d93aa;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 0.3em;
+            border-color: transparent;
+
+        }
+
+        .button-design:hover {
+            background-color: #64989d;
+        }
+
+        #checkout:hover {
+            background-color: #64989d;
+        }
+
+        #apply:hover {
+            background-color: #64989d;
+        }
+    </style>
+
+</head>
+
+<body onload="loadCart();">
+
+    <header>
+        <h1>The Trend Loft</h1>
+        <!-- NAVIGATION [COPY TO ALL PAGES] -->
+        <div id="navigation">
+            <div id="leftnav">
+                <a href="index.html"><img id="logo" src="images/logo2.png" alt="The Trend Loft Logo"></a>
+                <p><a href="category2.html">Clothes</a></p>
+                <p><a href="category\.html">Bags</a></p>
+                <p><a href="category1.html">Shoes</a></p>
+            </div>
+            <div id="rightnav">
+                <input id="search" type="text" placeholder="Search...">
+                <div class="user">
+                    <p>Welcome, <br> Sara <img src="images/arrow-down.png" alt="arrow down icon"
+                            class="user-arrow-icon"></p>
+                    <div class="user-menu">
+                        <a href="userpage\.html">Your Account<br><br></a>
+                        <a href="sellerdashboardpage\.html">Your Seller Account</a>
+                    </div>
+                </div>
+                <div class="forcart">
+                    <a href="cartpage.html"><img id="cart-img" src="images/cart.png" alt="Cart"></a>
+                </div>
+            </div>
+        </div>
+        <!-- Breadcrumbs -->
+        <div class="breadcrumb">
+            <p><a href="index.html" class="breadcrumb-links">Home</a> &raquo; My Cart</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Name -->
+        <h2 class="page-title">My Cart</h2>
+
+        <div class="main-content">
+            <!-- Order Summary -->
+            <div class="order-summary">
+                <h2>Order Summary</h2>
+                <div class="s-details">
+                    <p>Sub-Total</p>
+                    <p id="finalSubtotal">$0</p>
+                </div>
+                <div class="s-details">
+                    <p>Discount</p>
+                    <p id="discountedAmount">- $0</p>
+                </div>
+                <div class="s-details">
+                    <p>Shipping</p>
+                    <p id="shippingCost">$0</p>
+                </div>
+                <hr>
+                <div class="s-details">
+                    <p>Total</p>
+                    <p id="totalCost">$0</p>
+                </div>
+                <button id="checkout" onclick="checkout();">Continue to Checkout</button>
+                <p></p>
+            </div>
+
+            <!-- Cart -->
+            <div id="cart">
+                <!-- Category Names -->
+                <div class="cart-category">
+                    <p id="product">Product</p>
+                    <p class="others">Price</p>
+                    <p class="others">Quantity</p>
+                    <p class="others">Sub-Total</p>
+                    <p class="remove"> </p>
+                </div>
+
+                <div id="allItems">
+                    <!-- Item Blocks -->
+                </div>
+
+
+                <div class="buttons">
+                    <button class="button-design" onclick="shop();"> &laquo; Continue Shopping </button> <!-- Link -->
+                    <button class="button-design" onclick="empty();">Empty Cart</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="footer">
+            <img src="images/logo2.png" id="f-logo" alt="logo">
+            <div class="contacts">
+                <div class="phone">
+                    <img src="images/phone-icon.png" id="phone-icon" alt="phone">
+                    <p>+955XXXXXXXXX</p>
+                </div>
+                <div class="email">
+                    <a href="mailto:TheTrendLoft@gmail.com"> <img src="images/email-icon.png" id="email-icon"
+                            alt="email">
+                    </a>
+                    <p>info@example.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>©2024 <strong>The Trend Loft.</strong> All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        /* Items */
+        const shoes = [
+            {
+                "id": 1,
+                "name": "Mary-Jane Crystal-embellished Flats",
+                "brand": "Alaïa",
+                "description": "Mary-Jane Crystal-embellished Ballet Flats in Nappa Leather",
+                "price": 5000,
+                "image": "images/Alaia.png",
+                "category": "shoes",
+                "quantity": 1
+            },
+
+            {
+                "id": 2,
+                "name": "Gilda 95 Ombré Mules",
+                "brand": "Amina Muaddi",
+                "description": "Gilda 95 Ombré Crystal-embellished Mules in Mirror Leather",
+                "price": 7000,
+                "image": "images/amina.png",
+                "category": "shoes",
+                "quantity": 1
+            },
+
+            {
+                "id": 3,
+                "name": "Sporty Kate 100 Pumps",
+                "brand": "Christian Louboutin",
+                "description": "Sporty Kate 100 Pumps in Leather",
+                "price": 8000,
+                "image": "images/ChristianLouboutin.png",
+                "category": "shoes",
+                "quantity": 1
+            },
+
+            {
+                "id": 4,
+                "name": "Elle 85 Mule Sandals",
+                "brand": "Gianvito Rossi",
+                "description": "Elle 85 Mule Sandals in Patent Leather & Plexi",
+                "price": 7500,
+                "image": "images/Gianvito.png",
+                "category": "shoes",
+                "quantity": 1
+            },
+
+            {
+                "id": 5,
+                "name": "D'orsay 100 Pumps",
+                "brand": "SAINT LAURENT",
+                "description": "D'orsay 100 Pumps in Smooth Leather",
+                "price": 6000,
+                "image": "images/Saint.png",
+                "category": "shoes",
+                "quantity": 1
+            },
+
+            {
+                "id": 6,
+                "name": "Naked 105 Padlock Sandals",
+                "brand": "Tom Ford",
+                "description": "Naked 105 Padlock Sandals in Laminated Leather",
+                "price": 6750,
+                "image": "images/tomford.png",
+                "category": "shoes",
+                "quantity": 1
+            }
+        ];
+
+        const bags = [
+            {
+                "id": 1,
+                "name": "Large Parachute Bag",
+                "brand": "Bottega Veneta",
+                "description": "Large Parachute Bag in Intrecciato Leather",
+                "price": 5000,
+                "image": "images/bottega-bag.png",
+                "category": "bags",
+                "quantity": 1
+            },
+
+            {
+                "id": 2,
+                "name": "Mini Arcadie Top-handle Bag",
+                "brand": "Miu Miu",
+                "description": "Mini Arcadie Top-handle Bag in Matelassé Nappa",
+                "price": 7000,
+                "image": "images/miumiu-bag.png",
+                "category": "bags",
+                "quantity": 1
+            },
+
+            {
+                "id": 3,
+                "name": "Mini Puzzle Bag",
+                "brand": "Loewe",
+                "description": "Mini Puzzle Bag in Classic Calfskin",
+                "price": 8000,
+                "image": "images/loewe-bag.png",
+                "category": "bags",
+                "quantity": 1
+            },
+
+            {
+                "id": 4,
+                "name": "Kelly To Go Wallet",
+                "brand": "Hermès",
+                "description": "Kelly To Go Wallet in Epsom Leather",
+                "price": 7500,
+                "image": "images/hermes-bag.png",
+                "category": "bags",
+                "quantity": 1
+            },
+
+            {
+                "id": 5,
+                "name": "Medium Double Flap Bag",
+                "brand": "Chanel",
+                "description": "Medium Double Flap Bag in Quilted Lambskin Leather",
+                "price": 6000,
+                "image": "images/Chanel-bag.png",
+                "category": "bags",
+                "quantity": 1
+            },
+
+            {
+                "id": 6,
+                "name": "Mini Arco Tote Bag",
+                "brand": "Bottega Veneta",
+                "description": "Mini Arco Tote Bag in Intrecciato Leather",
+                "price": 6750,
+                "image": "images/bottega-bag2.png",
+                "category": "bags",
+                "quantity": 1
+            }
+        ];
+
+        const clothes = [
+            {
+                "id": 1,
+                "name": "Imani Gown",
+                "brand": "Solace London",
+                "description": "Imani gown",
+                "price": 5000,
+                "image": "images/solace.png",
+                "category": "dresses",
+                "quantity": 1
+            },
+
+            {
+                "id": 2,
+                "name": "Classic Pink Dress",
+                "brand": "Anna Quan",
+                "description": "Classic pink dress",
+                "price": 7000,
+                "image": "images/anna.png",
+                "category": "dresses",
+                "quantity": 1
+            },
+
+            {
+                "id": 3,
+                "name": "The Kaila Maxi Dress",
+                "brand": "Solace London",
+                "description": "The Kaila maxi dress",
+                "price": 8000,
+                "image": "images/solace2.png",
+                "category": "dresses",
+                "quantity": 1
+            },
+
+            {
+                "id": 4,
+                "name": "Ruffle-detail Maxi Dress",
+                "brand": "Ana",
+                "description": "Ruffle-detail maxi dress",
+                "price": 7500,
+                "image": "images/ana.png",
+                "category": "dresses",
+                "quantity": 1
+            },
+
+            {
+                "id": 5,
+                "name": "The Kyla Maxi Dress",
+                "brand": "Solace London",
+                "description": "The Kyla maxi dress",
+                "price": 6000,
+                "image": "images/solace4.png",
+                "category": "dresses",
+                "quantity": 1
+            },
+
+            {
+                "id": 6,
+                "name": "Talia Oversized-Cuffs Gown",
+                "brand": "Solace London",
+                "description": "Talia oversized-cuffs gown",
+                "price": 6750,
+                "image": "images/solace3.png",
+                "category": "dresses",
+                "quantity": 1
+            }
+        ];
+
+        /* Checkout Message */
+        function checkout() {
+            var total = document.getElementById("totalCost").innerHTML;
+            alert("Thank you for your purchase! \nYour total is: " + total);
+            document.getElementById("allItems").remove();
+            document.getElementById("shippingCost").innerHTML = "$0";
+            document.getElementById("finalSubtotal").innerHTML = "$0";
+            empty();
+            window.location.href = "Product evaluation.html";
+        }
+
+        /* Quantity Buttons */
+        // Decrease
+        function decrease(button) {
+            var parent = button.parentNode;
+            var quant = parseInt(parent.querySelector(".quantity").value);
+            if (quant > 1) {
+                parent.querySelector(".quantity").value = quant - 1;
+                var price = parseInt(parent.parentNode.querySelector(".price").innerHTML.replace("$", ""));
+                var subTotal = (quant - 1) * price;
+                parent.parentNode.querySelector(".subtotal").innerHTML = "$" + subTotal.toFixed(2);
+            }
+            updatePrice();
+        }
+
+        // Increase
+        function increase(button) {
+            var parent = button.parentNode;
+            var quant = parseInt(parent.querySelector(".quantity").value) + 1;
+            parent.querySelector(".quantity").value = quant;
+            var price = parseInt(parent.parentNode.querySelector(".price").innerHTML.replace("$", ""));
+            var subTotal = quant * price;
+            parent.parentNode.querySelector(".subtotal").innerHTML = "$" + subTotal.toFixed(2);
+            updatePrice();
+        }
+
+        /* Remove */
+        function removeItem(button) {//كامل هنا
+
+            button.parentNode.parentNode.parentNode.remove();
+
+
+            let itemName = button.parentNode.parentNode.querySelector(".item-name").innerText;
+
+
+            let shoesCart = JSON.parse(localStorage.getItem('shoeCart')) || [];
+            let clothesCart = JSON.parse(localStorage.getItem('clothesCart')) || [];
+            let bagsCart = JSON.parse(localStorage.getItem('bagCart')) || [];
+
+
+            shoesCart = shoesCart.filter(item => item.name !== itemName);
+            clothesCart = clothesCart.filter(item => item.name !== itemName);
+            bagsCart = bagsCart.filter(item => item.name !== itemName);
+
+
+            localStorage.setItem('shoeCart', JSON.stringify(shoesCart));
+            localStorage.setItem('clothesCart', JSON.stringify(clothesCart));
+            localStorage.setItem('bagCart', JSON.stringify(bagsCart));
+
+
+            var items = document.getElementsByClassName("item");
+            if (items.length === 0) {
+                document.getElementById("shippingCost").innerHTML = "$0.00";
+            }
+
+
+            updatePrice();
+        }
+
+        /* Empty Cart */
+        function empty() {
+            var cart = document.getElementById("cart");
+            var items = cart.getElementsByClassName("item");
+            for (var i = items.length - 1; i >= 0; i--) {
+                items[i].remove();
+            }
+            document.getElementById("shippingCost").innerHTML = "$0";
+            updatePrice();
+            localStorage.clear();
+        }
+
+        /* Update Total Price */
+        function updatePrice() {
+            var subTotal = 0;
+            var total = 0;
+            var items = document.getElementsByClassName("item");
+            for (var i = items.length - 1; i >= 0; i--) {
+                subTotal += parseFloat(items[i].querySelector(".subtotal").innerHTML.replace("$", ""));
+            }
+            total = subTotal + parseFloat(document.getElementById("shippingCost").innerHTML.replace("$", ""));
+            document.getElementById("finalSubtotal").innerHTML = "$" + subTotal.toFixed(2);
+            document.getElementById("totalCost").innerHTML = "$" + total.toFixed(2);
+
+            localStorage.setItem('totalCost', total.toFixed(2)); //هنا
+
+        }
+
+        /* Continue Shopping */
+        function shop() {
+            window.location.href = "index.html";
+        }
+
+        /* Load items to cart */
+        function loadCart() {
+            let shoesCart = JSON.parse(localStorage.getItem('shoeCart')) || [];
+            let clothesCart = JSON.parse(localStorage.getItem('clothesCart')) || [];
+            let bagsCart = JSON.parse(localStorage.getItem('bagCart')) || [];
+
+            let allItemsContainer = document.getElementById('allItems');
+
+            if (shoesCart.length === 0 && clothesCart.length === 0 && bagsCart.length === 0) {
+                allItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
+            } else {
+                let subTotal = 0; // هناا
+                allItemsContainer.innerHTML = '';
+                if (shoesCart.length !== 0) {
+                    shoesCart.forEach(shoes => {
+                        let itemDiv = document.createElement('div');
+                        itemDiv.classList.add('item');
+
+                        itemDiv.innerHTML = `
+                    <div class="item-details">
+                        <div class="product-detail">
+                            <div>
+                                <img src="${shoes.image}" alt="${shoes.name}" class="item-img">
+                            </div>
+                            <div>
+                                <p class="item-name">${shoes.name}</p>
+                                <p>${shoes.brand}</p>
+                                <p>${shoes.description}</p>
+                            </div>
+                        </div>
+                        <p class="item-others price">$${shoes.price}</p>
+                        <div class="item-others counter">
+                            <button class="operation decrease" onclick="decreaseQuantity(this);">-</button>
+                            <input type="text" value="1" class="quantity" readonly>
+                            <button class="operation increase" onclick="increaseQuantity(this);">+</button>
+                        </div>
+                        <p class="item-others subtotal">$${shoes.price * shoes.quantity}</p>
+                        <div class="remove">
+                            <button class="remove-button" onclick="removeItem(this);">x</button>
+                        </div>
+                    </div>
+                    <hr class="item-line">
+                `;
+                        subTotal += shoes.price * shoes.quantity; // هناا
+                        allItemsContainer.appendChild(itemDiv);
+                    });
+
+                }
+                if (clothesCart !== 0) {
+                    clothesCart.forEach(clothes => {
+                        let itemDiv = document.createElement('div');
+                        itemDiv.classList.add('item');
+
+                        itemDiv.innerHTML = `
+                    <div class="item-details">
+                        <div class="product-detail">
+                            <div>
+                                <img src="${clothes.image}" alt="${clothes.name}" class="item-img">
+                            </div>
+                            <div>
+                                <p class="item-name">${clothes.name}</p>
+                                <p>${clothes.brand}</p>
+                                <p>${clothes.description}</p>
+                            </div>
+                        </div>
+                        <p class="item-others price">$${clothes.price}</p>
+                        <div class="item-others counter">
+                            <button class="operation decrease" onclick="decreaseQuantity(this);">-</button>
+                            <input type="text" value="1" class="quantity" readonly>
+                            <button class="operation increase" onclick="increaseQuantity(this);">+</button>
+                        </div>
+                        <p class="item-others subtotal">$${clothes.price * clothes.quantity}</p>
+                        <div class="remove">
+                            <button class="remove-button" onclick="removeItem(this);">x</button>
+                        </div>
+                    </div>
+                    <hr class="item-line">
+                `;
+                        subTotal += clothes.price * clothes.quantity; // هناا
+                        allItemsContainer.appendChild(itemDiv);
+                    });
+                }
+                if (bagsCart.length !== 0) {
+                    bagsCart.forEach(bag => {
+                        let itemDiv = document.createElement('div');
+                        itemDiv.classList.add('item');
+
+                        itemDiv.innerHTML = `
+                    <div class="item-details">
+                        <div class="product-detail">
+                            <div>
+                                <img src="${bag.image}" alt="${bag.name}" class="item-img">
+                            </div>
+                            <div>
+                                <p class="item-name">${bag.name}</p>
+                                <p>${bag.brand}</p>
+                                <p>${bag.description}</p>
+                            </div>
+                        </div>
+                        <p class="item-others price">$${bag.price}</p>
+                        <div class="item-others counter">
+                            <button class="operation decrease" onclick="decreaseQuantity(this);">-</button>
+                            <input type="text" value="1" class="quantity" readonly>
+                            <button class="operation increase" onclick="increaseQuantity(this);">+</button>
+                        </div>
+                        <p class="item-others subtotal">$${bag.price * bag.quantity}</p>
+                        <div class="remove">
+                            <button class="remove-button" onclick="removeItem(this);">x</button>
+                        </div>
+                    </div>
+                    <hr class="item-line">
+                `;
+                        subTotal += bag.price * bag.quantity; // هناا
+                        allItemsContainer.appendChild(itemDiv);
+                    });
+
+                }
+
+                allItemsContainer.addEventListener('click', function (event) {
+                    const button = event.target;
+
+                    if (button.classList.contains('decrease')) {
+                        decrease(button);
+                    } else if (button.classList.contains('increase')) {
+                        increase(button);
+                    } else if (button.classList.contains('remove-button')) {
+                        removeItem(button);
+                    }
+                });
+                // هنا لما الاخير
+                document.getElementById("finalSubtotal").innerHTML = "$" + subTotal.toFixed(2);
+                document.getElementById("totalCost").innerHTML = "$" + (subTotal + parseFloat(document.getElementById("shippingCost").innerHTML.replace("$", ""))).toFixed(2);
+                document.getElementById("shippingCost").innerHTML = "$50";
+
+                localStorage.setItem('totalCost', (subTotal + parseFloat(document.getElementById("shippingCost").innerHTML.replace("$", ""))).toFixed(2));
+            }
+        }
+    </script>
+</body>
+
+</html>

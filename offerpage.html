@@ -1,0 +1,421 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="css/style\.css" rel="stylesheet">
+    <title>Offers Page</title>
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background-color: white;
+            border-radius: 0.625em;
+            box-shadow: 0 0.375em 0.75em rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 75em;
+            margin: 2.5em auto;
+            overflow: hidden;
+        }
+
+        .section-title {
+            grid-column: span 2;
+            text-align: center;
+            padding: 1.25em;
+            background-color: #f9f9f9;
+            color: rgb(74, 74, 74);
+            font-size: 1.5em;
+            text-transform: uppercase;
+            letter-spacing: 0.075em;
+            margin: 0;
+            border-bottom: 0.125em solid #555555;
+        }
+
+        .section-header {
+            font-size: 1.375em;
+            margin-bottom: 1.25em;
+            color: #333;
+            text-align: left;
+            border-bottom: 0.0625em solid #777777;
+            padding-bottom: 0.625em;
+        }
+
+        .left-section {
+            background-color: #f8f9fa;
+            padding: 1.875em;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .editoffers {
+            overflow: scroll;
+        }
+
+        .offer-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.25em;
+        }
+
+        .offer-item img {
+            width: 5.625em;
+            height: 5.625em;
+            border-radius: 0.3125em;
+            margin-right: 0.9375em;
+            object-fit: cover;
+            border: 0.125em solid #ddd;
+        }
+
+        .offer-item label {
+            flex: 1;
+            font-size: 1em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .offer-item input[type="checkbox"] {
+            margin-right: 0.625em;
+        }
+
+        .delete-btn {
+            width: 100%;
+            padding: 0.75em;
+            background-color: #6d93aa;
+            text-decoration: none;
+            border: none;
+            color: white;
+            font-size: 1.125em;
+            cursor: pointer;
+            border-radius: 0.3125em;
+            box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1);
+            margin-top: 1.25em;
+        }
+
+        .delete-btn:hover {
+            background-color: #64989d;
+        }
+
+        .right-section {
+    padding: 1.875em;
+}
+
+.right-section label {
+    display: block;
+    margin-bottom: 0.625em;
+    font-weight: bold;
+    font-size: 1em;
+    color: #333;
+}
+
+.right-section input[type="text"],
+.right-section textarea,
+.right-section input[type="file"] {
+    width: 100%;
+    padding: 0.75em;
+    margin-bottom: 1.25em;
+    border: 0.125em solid #ddd;
+    border-radius: 0.3125em;
+    box-sizing: border-box;
+    font-size: 1em;
+    color: #333;
+}
+
+.right-section input:focus,
+.right-section textarea:focus {
+    border-color: #777777;
+    outline: none;
+    box-shadow: 0 0 0.3125em rgba(119, 119, 119, 0.2);
+}
+
+.right-section input::placeholder,
+.right-section textarea::placeholder {
+    color: #888;
+}
+
+.right-section textarea {
+    height: 6.25em;
+    resize: vertical;
+}
+
+.right-section input[type="submit"] {
+    width: 100%;
+    padding: 0.75em;
+    background-color: #6d93aa;
+    text-decoration: none;
+    border: none;
+    color: white;
+    font-size: 1.125em;
+    cursor: pointer;
+    border-radius: 0.3125em;
+    box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1);
+}
+
+.right-section input[type="submit"]:hover {
+    background-color: #64989d;
+}
+
+.right-section input[type="file"] {
+    display: none;
+}
+
+.right-section .custom-file-upload {
+    display: inline-block;
+    padding: 0.5em 1em;
+    font-size: 0.875em;
+    font-weight: bold;
+    color: white;
+    background-color: #6d93aa;
+    border-radius: 0.3125em;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 6.25em;
+}
+
+.right-section .custom-file-upload:hover {
+    background-color: #64989d;
+}
+    </style>
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+        <!--HEADER-->
+        <h1>The Trend Loft</h1>
+        <div id="navigation">
+            <div id="leftnav">
+                <a href="index.html"><img id="logo" src="images/logo2.png" alt="The Trend Loft"></a>
+                <p><a href="category2.html">Clothes</a></p>
+                <p><a href="category\.html">Bags</a></p>
+                <p><a href="category1.html">Shoes</a></p>
+            </div>
+            <div id="rightnav">
+                <input id="search" type="text" placeholder="Search...">
+                <div class="user">
+                    <p>Welcome, <br> Sara<img src="images/arrow-down.png" alt="arrow down icon"
+                            class="user-arrow-icon"></i></p>
+                    <div class="user-menu">
+                        <a href="userpage\.html">Your Account<br><br></a>
+                        <a href="sellerdashboardpage\.html">Your Seller Account</a>
+                    </div>
+                </div>
+                <div class="forcart">
+                    <a href="cartpage.html"><img id="cart-img" src="images/cart.png" alt="Cart"></a>
+                </div>
+            </div>
+        </div>
+        </header>
+        </header>
+        <!-- Breadcrumbs -->
+        <div class="breadcrumb">
+            <p><a href="index.html" class="breadcrumb-links">Home</a> &raquo; <a href="sellerdashboardpage\.html"
+                    class="breadcrumb-links">Your Seller Account</a> &raquo;Offers Page</p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="container">
+            <!-- Section Title (Offers Page Header) -->
+            <h2 class="section-title">Offers Page</h2>
+
+            <!-- Left Section: Available Offers -->
+            <div class="left-section">
+                <h3 class="section-header">Available Offers</h3>
+
+                <div class="editoffers">
+                    <div class="offer-item">
+                        <input type="checkbox" id="offer1">
+                        <img src="images/70Sale.jpg" alt="Offer 70% sale">
+                        <label for="offer1">70% sale</label>
+                    </div>
+
+                    <div class="offer-item">
+                        <input type="checkbox" id="offer2">
+                        <img src="images/30Off.jpg" alt="Offer 30% sale">
+                        <label for="offer2">30% off everything</label>
+                    </div>
+
+                    <div class="offer-item">
+                        <input type="checkbox" id="offer3">
+                        <img src="images/FreeShipping.jpg" alt="Offer free shipping">
+                        <label for="offer3">Free Shipping on Orders Over $20</label>
+                    </div>
+                </div>
+
+
+                <!-- Delete Button -->
+                <button class="delete-btn">Delete Selected Offers</button>
+            </div>
+
+
+            <!-- Right Section: Add New Offer Form -->
+            <div class="right-section">
+                <h3 class="section-header">Add New Offer</h3>
+            
+                <form action="#" method="post" enctype="multipart/form-data">
+                    <label for="offer-label">Offer Label</label>
+                    <input type="text" id="offer-label" name="offer-label" placeholder="e.g. Summer Sale" required>
+            
+                    <label for="offer-description">Offer Description</label>
+                    <textarea id="offer-description" name="offer-description" placeholder="Describe the offer here..." required></textarea>
+            
+                    <label for="offer-image">Upload Offer Image</label>
+                    <label class="custom-file-upload">
+                        <input type="file" id="offer-image" name="offer-image" required>
+                        Choose File
+                    </label>
+            
+                    <input type="submit" value="Add Offer">
+                </form>
+            </div>
+            
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <img src="images/logo2.png" id="f-logo" alt="logo">
+            <div class="contacts">
+                <div class="phone">
+                    <img src="images/phone-icon.png" id="phone-icon" alt="phone">
+                    <p>+955XXXXXXXXX</p>
+                </div>
+                <div class="email">
+                    <img src="images/email-icon.png" id="email-icon" alt="email">
+                    <p>info@example.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>©2024 <strong>The Trend Loft.</strong> All rights reserved.</p>
+            </div>
+        </div>
+
+        <script>
+            // Load offers from local storage or use default values
+            let offers = JSON.parse(localStorage.getItem('offers')) || [
+                { id: "offer1", label: "70% sale", image: "images/70Sale.jpg" },
+                { id: "offer2", label: "30% off everything", image: "images/30Off.jpg" },
+                { id: "offer3", label: "Free Shipping on Orders Over $20", image: "images/FreeShipping.jpg" }
+            ];
+        
+            // Function to validate offers
+            function validateOffers(offers) {
+                return offers.filter(offer => offer.id && offer.label && offer.image);
+            }
+        
+            // Repair improperly saved offers (if any)
+            offers = validateOffers(offers);
+            saveOffers(); // Save the repaired offers
+        
+            // Function to save offers to local storage
+            function saveOffers() {
+                localStorage.setItem('offers', JSON.stringify(offers));
+            }
+        
+            // Function to render offers in the DOM
+            function renderOffers() {
+                const editOffers = document.querySelector('.editoffers');
+                editOffers.innerHTML = ''; // Clear existing offers
+        
+                offers.forEach(offer => {
+                    const offerItem = document.createElement('div');
+                    offerItem.classList.add('offer-item');
+                    offerItem.innerHTML = `
+                        <input type="checkbox" id="${offer.id}">
+                        <img src="${offer.image}" alt="${offer.label}">
+                        <label for="${offer.id}">${offer.label}</label>
+                    `;
+                    editOffers.appendChild(offerItem);
+                });
+            }
+        
+            // Initial rendering of offers
+            renderOffers();
+        
+            // Function to handle delete selected offers
+            document.querySelector('.delete-btn').addEventListener('click', function () {
+                const selectedOffers = offers.filter(offer => {
+                    const checkbox = document.getElementById(offer.id);
+                    return checkbox && checkbox.checked; // Ensure the checkbox exists and is checked
+                });
+        
+                if (selectedOffers.length === 0) {
+                    alert("Please select at least one offer");
+                    return; // Stop further execution
+                }
+        
+                const confirmDelete = confirm("Are you sure you want to delete the selected offers?");
+                if (confirmDelete) {
+                    selectedOffers.forEach(offer => {
+                        // Remove from the `offers` array
+                        offers = offers.filter(o => o.id !== offer.id);
+        
+                        // Remove from the DOM
+                        const checkbox = document.getElementById(offer.id);
+                        if (checkbox) {
+                            checkbox.closest('.offer-item').remove();
+                        }
+                    });
+        
+                    saveOffers(); // Save updated offers to local storage
+                    renderOffers(); // Re-render offers
+                }
+            });
+        
+            // Form validation and adding a new offer
+            document.querySelector('form').addEventListener('submit', function (event) {
+                event.preventDefault();
+        
+                const offerLabel = document.getElementById("offer-label").value.trim();
+                const offerDescription = document.getElementById("offer-description").value.trim();
+                const offerImage = document.getElementById("offer-image").files[0]; // File input
+        
+                // Check if fields are empty
+                if (!offerLabel || !offerDescription) {
+                    alert("Please fill in all fields.");
+                    return; // Stop further execution
+                }
+        
+                // Check if a file is attached
+                if (!offerImage) {
+                    alert("Please attach a file for the offer image.");
+                    return; // Stop further execution
+                }
+        
+                // If form is valid, convert the image to Base64 and save the offer
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    const imageBase64 = event.target.result;
+        
+                    const newOfferId = `offer${offers.length + 1}`;
+                    const newOffer = {
+                        id: newOfferId,
+                        label: offerLabel,
+                        image: imageBase64 // Save Base64 string
+                    };
+        
+                    offers.push(newOffer);
+        
+                    saveOffers(); // Save updated offers to local storage
+                    renderOffers(); // Re-render offers
+        
+                    // Clear the form fields
+                    document.querySelector('form').reset();
+                };
+        
+                reader.readAsDataURL(offerImage); // Read image file as Base64
+            });
+        </script>
+        
+        
+        
+        
+        
+        
+        
+
+</body>
+
+</html>
