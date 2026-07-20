@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Cart</title>
-    <link href="css/style\.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <style>
         /* Main Content */
 
@@ -39,7 +39,7 @@
 
         #apply {
             width: 5.5em;
-            background-color: #6d93aa;
+            background-color: var(--color-primary);
             color: white;
             text-decoration: none;
             font-weight: bold;
@@ -56,7 +56,7 @@
         #checkout {
             width: 100%;
             padding: 0.8em;
-            background-color: #6d93aa;
+            background-color: var(--color-primary);
             color: white;
             text-decoration: none;
             font-weight: bold;
@@ -76,8 +76,8 @@
             height: auto;
             display: flex;
             justify-content: space-around;
-            background-color: #f9f9f9;
-            color: black;
+            background-color: var(--color-surface);
+            color: var(--color-text);
             font-size: 1.1em;
         }
 
@@ -156,20 +156,23 @@
 
         .quantity {
             text-align: center;
-            border: solid #ddd;
+            border: solid var(--color-border);
             border-radius: 0.25em;
             width: 2.5em;
+            background-color: var(--color-bg);
+            color: var(--color-text);
         }
 
         .operation {
             width: 2em;
             height: 2.2em;
-            background: #f2f2f2;
+            background: var(--color-surface);
             border-radius: 0.25em;
-            border: solid #ddd;
+            border: solid var(--color-border);
             display: inline-block;
             vertical-align: middle;
             text-align: center;
+            color: var(--color-text);
         }
 
 
@@ -186,7 +189,7 @@
 
         .button-design {
             padding: 0.6em 1em;
-            background-color: #6d93aa;
+            background-color: var(--color-primary);
             color: white;
             text-decoration: none;
             font-weight: bold;
@@ -196,15 +199,46 @@
         }
 
         .button-design:hover {
-            background-color: #64989d;
+            background-color: var(--color-primary-hover);
         }
 
         #checkout:hover {
-            background-color: #64989d;
+            background-color: var(--color-primary-hover);
         }
 
         #apply:hover {
-            background-color: #64989d;
+            background-color: var(--color-primary-hover);
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+
+            .order-summary,
+            #cart {
+                width: 100%;
+            }
+
+            .item-details {
+                flex-wrap: wrap;
+                row-gap: 0.5em;
+            }
+
+            .product-detail {
+                width: 100%;
+            }
+
+            .item-others {
+                width: auto;
+                flex: 1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #discountbox {
+                width: 100%;
+            }
         }
     </style>
 
@@ -657,13 +691,13 @@
                         </div>
                         <p class="item-others price">$${shoes.price}</p>
                         <div class="item-others counter">
-                            <button class="operation decrease" onclick="decreaseQuantity(this);">-</button>
+                            <button class="operation decrease">-</button>
                             <input type="text" value="1" class="quantity" readonly>
-                            <button class="operation increase" onclick="increaseQuantity(this);">+</button>
+                            <button class="operation increase">+</button>
                         </div>
                         <p class="item-others subtotal">$${shoes.price * shoes.quantity}</p>
                         <div class="remove">
-                            <button class="remove-button" onclick="removeItem(this);">x</button>
+                            <button class="remove-button">x</button>
                         </div>
                     </div>
                     <hr class="item-line">
@@ -692,13 +726,13 @@
                         </div>
                         <p class="item-others price">$${clothes.price}</p>
                         <div class="item-others counter">
-                            <button class="operation decrease" onclick="decreaseQuantity(this);">-</button>
+                            <button class="operation decrease">-</button>
                             <input type="text" value="1" class="quantity" readonly>
-                            <button class="operation increase" onclick="increaseQuantity(this);">+</button>
+                            <button class="operation increase">+</button>
                         </div>
                         <p class="item-others subtotal">$${clothes.price * clothes.quantity}</p>
                         <div class="remove">
-                            <button class="remove-button" onclick="removeItem(this);">x</button>
+                            <button class="remove-button">x</button>
                         </div>
                     </div>
                     <hr class="item-line">
@@ -726,13 +760,13 @@
                         </div>
                         <p class="item-others price">$${bag.price}</p>
                         <div class="item-others counter">
-                            <button class="operation decrease" onclick="decreaseQuantity(this);">-</button>
+                            <button class="operation decrease">-</button>
                             <input type="text" value="1" class="quantity" readonly>
-                            <button class="operation increase" onclick="increaseQuantity(this);">+</button>
+                            <button class="operation increase">+</button>
                         </div>
                         <p class="item-others subtotal">$${bag.price * bag.quantity}</p>
                         <div class="remove">
-                            <button class="remove-button" onclick="removeItem(this);">x</button>
+                            <button class="remove-button">x</button>
                         </div>
                     </div>
                     <hr class="item-line">

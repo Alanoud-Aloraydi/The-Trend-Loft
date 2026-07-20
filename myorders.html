@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Orders</title>
-    <link href="css/style\.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <style>
         .page-title {
             margin-left: 1%;
@@ -32,9 +32,9 @@
         }
 
         th {
-            background-color: #6d93aa;
+            background-color: var(--color-primary);
             color: white;
-            border-color: #6d93aa;
+            border-color: var(--color-primary);
         }
 
         /* --------------------------------------------------------------------------- */
@@ -57,18 +57,39 @@
         }
 
         .pagination a:active {
-            background-color: #6d93aa;
+            background-color: var(--color-primary);
             color: white;
         }
 
         .pagination a:hover {
-            background-color: #6d93aa;
+            background-color: var(--color-primary);
             color: white;
             width: 1.8em;
             height: 1.8em;
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .orders {
+                width: 100%;
+                overflow-x: auto;
+            }
+
+            table {
+                width: 95%;
+                min-width: 30em;
+            }
+
+            th, td {
+                height: 3em;
+                padding: 0.5em;
+            }
+
+            .pagination {
+                width: 90%;
+            }
         }
     </style>
 </head>

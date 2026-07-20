@@ -4,22 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Reivew orders</title>
-    <link rel="stylesheet" href="css/style\.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
-    <script src="js/script\.js" defer></script>
+    <script src="js/script.js" defer></script>
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
         @font-face {
             font-family: "Vanity";
-            src:\ url\(\.\./fonts/Vanity-Light\.ttf\);
+            src: url(../fonts/Vanity-Light.ttf);
         }
 
         /* Header */
-        head {
-            font-family: "Vanity";
-        }
-
         h1 {
+            font-family: "Vanity";
             text-align: center;
         }
 
@@ -50,7 +47,7 @@
         #navigation {
             display: flex;
             justify-content: space-between;
-            background-color: #f9f9f9;
+            background-color: var(--color-surface);
             align-items: center;
         }
 
@@ -183,7 +180,7 @@
          /*  .review-btn {
             display: flex;
             justify-content: flex-start;
-            background-color: #6d93aa;
+            background-color: var(--color-primary);
             color: #fff;
             padding: 0.625em 1.875em;
             border: none;
@@ -191,7 +188,7 @@
         } */
 
        /* .review-btn:hover {
-            background-color: #6d93aa;
+            background-color: var(--color-primary);
         }  */
          
          .review-btn {
@@ -209,7 +206,7 @@
 
 
           /* .review-btn:hover {
-            background-color: #64989d;
+            background-color: var(--color-primary-hover);
         } */
 
 
@@ -264,6 +261,20 @@
     color: #ff9c1a;
 }
 
+@media (max-width: 768px) {
+    #navigation { flex-wrap: wrap; row-gap: 0.75em; }
+    #leftnav, #rightnav { width: 100%; justify-content: space-between; flex-wrap: wrap; }
+
+    .product-item {
+        flex-wrap: wrap;
+        row-gap: 0.75em;
+    }
+
+    #Stars1, #Stars2 {
+        width: auto;
+        height: auto;
+    }
+}
 
     </style>
 </head>

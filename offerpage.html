@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <link href="css/style\.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <title>Offers Page</title>
     <style>
         .container {
@@ -82,7 +82,7 @@
         .delete-btn {
             width: 100%;
             padding: 0.75em;
-            background-color: #6d93aa;
+            background-color: var(--color-primary);
             text-decoration: none;
             border: none;
             color: white;
@@ -94,7 +94,7 @@
         }
 
         .delete-btn:hover {
-            background-color: #64989d;
+            background-color: var(--color-primary-hover);
         }
 
         .right-section {
@@ -142,7 +142,7 @@
 .right-section input[type="submit"] {
     width: 100%;
     padding: 0.75em;
-    background-color: #6d93aa;
+    background-color: var(--color-primary);
     text-decoration: none;
     border: none;
     color: white;
@@ -153,7 +153,7 @@
 }
 
 .right-section input[type="submit"]:hover {
-    background-color: #64989d;
+    background-color: var(--color-primary-hover);
 }
 
 .right-section input[type="file"] {
@@ -166,7 +166,7 @@
     font-size: 0.875em;
     font-weight: bold;
     color: white;
-    background-color: #6d93aa;
+    background-color: var(--color-primary);
     border-radius: 0.3125em;
     cursor: pointer;
     text-decoration: none;
@@ -176,7 +176,18 @@
 }
 
 .right-section .custom-file-upload:hover {
-    background-color: #64989d;
+    background-color: var(--color-primary-hover);
+}
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+        width: 95%;
+    }
+
+    .section-title {
+        grid-column: span 1;
+    }
 }
     </style>
 </head>
@@ -325,7 +336,7 @@
                     offerItem.innerHTML = `
                         <input type="checkbox" id="${offer.id}">
                         <img src="${offer.image}" alt="${offer.label}">
-                        <label for="${offer.id}">${offer.label}</label>
+                        <label for="${offer.id}">${offer.label}${offer.description ? " - " + offer.description : ""}</label>
                     `;
                     editOffers.appendChild(offerItem);
                 });
@@ -393,6 +404,7 @@
                     const newOffer = {
                         id: newOfferId,
                         label: offerLabel,
+                        description: offerDescription,
                         image: imageBase64 // Save Base64 string
                     };
         

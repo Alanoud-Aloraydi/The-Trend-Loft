@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Seller Account</title>
-    <link rel="stylesheet" href="css/style\.css">
+    <link rel="stylesheet" href="css/style.css">
     <style> 
 
         .content-container {
@@ -38,7 +38,7 @@
 	    	border-radius: 1em;
             width: 25em;
             height: auto;
-            border: 0.063em solid #ddd;
+            border: 0.063em solid var(--color-border);
             padding: 1em;
             display: flex;
             flex-direction: column;
@@ -93,32 +93,32 @@
         }
 
         .product-price {
-            color: #333;
+            color: var(--color-text);
             font-weight: normal;
             text-align: right;
             width: auto;
-            margin-left: 1em; 
+            margin-left: 1em;
         }
 
         .product-description {
             font-size: 0.875em;
-            color: #555;
+            color: var(--color-text-secondary);
             text-align: left;
-            margin-top: 0.5em; 
+            margin-top: 0.5em;
             word-wrap: break-word;
             white-space: normal;
         }
 
         .product-category {
             font-size: 0.875em;
-            color: #888;
+            color: var(--color-text-secondary);
             text-align: left;
-            margin-top: 0.5em; 
+            margin-top: 0.5em;
         }
 
         .product-category p {
             font-size: 0.875em;
-            color: #888;
+            color: var(--color-text-secondary);
             margin: 0;
         }
 
@@ -131,7 +131,7 @@
         }
 
         .product-list::-webkit-scrollbar-thumb {
-            background-color: #6d93aa;
+            background-color: var(--color-primary);
             border-radius: 0.625em;
         }
 
@@ -146,7 +146,7 @@
         }
 
         .panel {
-            border: 0.063em solid #ddd;
+            border: 0.063em solid var(--color-border);
             padding: 1.25em;
             text-align: center;
             margin-bottom: 1.25em;
@@ -159,7 +159,7 @@
         .link-button {
             display: inline-block;
             padding: 0.625em 1.25em;
-            background-color: #6d93aa;
+            background-color: var(--color-primary);
             color: white;
             text-align: center;
             text-decoration: none;
@@ -168,7 +168,7 @@
             margin-top: 0.625em;
         }
         .link-button:hover {
-            background-color: #64989d;     
+            background-color: var(--color-primary-hover);     
         }
 		.delete-button {
     background-color: #e57373;
@@ -186,7 +186,30 @@
 
 .delete-container {
     margin-top: 0.5em;
-    text-align: right; 
+    text-align: right;
+}
+
+@media (max-width: 768px) {
+    .content-container {
+        flex-direction: column;
+    }
+
+    .products-section,
+    .side-panels {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .side-panels {
+        margin-top: 1.25em;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-box {
+        width: 85vw;
+        min-width: 85vw;
+    }
 }
     </style>
 
@@ -342,47 +365,6 @@
             productCount.textContent = products.length;
         }
     }
-
-
-    document.querySelector('.add-offer-btn').addEventListener('click', function () {
-        const offerLabel = document.getElementById('offer-label').value.trim();
-        const offerDescription = document.getElementById('offer-description').value.trim();
-        const offerImage = document.getElementById('offer-image').files[0];
-
-        if (!offerLabel || !offerDescription || !offerImage) {
-            alert('Please fill in all fields!');
-            return;
-        }
-
-        offers.push({ label: offerLabel, description: offerDescription, image: offerImage });
-        localStorage.setItem("offers", JSON.stringify(offers));
-
-        
-        offerCount.textContent = offers.length;
-
-        document.querySelector('.offer-form').reset();
-    });
-
-  
-    document.querySelector('.delete-offers-btn').addEventListener('click', function () {
-        const selectedOffers = offers.filter((offer, index) => document.getElementById(`offer${index}`).checked);
-
-        if (selectedOffers.length === 0) {
-            alert("Please select at least one offer");
-            return;
-        }
-
-        const confirmDelete = confirm("Are you sure you want to delete the selected offers?");
-        if (confirmDelete) {
-      
-            offers = offers.filter((offer, index) => !document.getElementById(`offer${index}`).checked);
-
-            localStorage.setItem("offers", JSON.stringify(offers));
-
-         
-            offerCount.textContent = offers.length;
-        }
-    });
 });
 
    </script>

@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Account</title>
-    <link rel="stylesheet" href="css/style\.css">
+    <link rel="stylesheet" href="css/style.css">
  
 
 
@@ -90,7 +90,7 @@
             width: 90%;
         }
         .link-button:hover {
-         background-color: #64989d; 	
+         background-color: var(--color-primary-hover); 	
         }
 
         .item-img {
@@ -121,6 +121,7 @@
             display: flex;
             flex-direction: column;
             background-color: #f9f9f9;
+            color: #222222;
             padding: 0.625em;
             border-radius: 0.3125em;
             margin-right: 0.9375em;
@@ -191,6 +192,36 @@
             width: 5em;
             height: 5em;
             object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            #main-content {
+                flex-direction: column;
+                padding: 1em;
+                gap: 1.25em;
+            }
+
+            #my-cart, #my-orders {
+                width: 100%;
+            }
+
+            #product-evaluation {
+                width: 95%;
+            }
+
+            .review {
+                width: 85%;
+            }
+
+            .review-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .product-image-review {
+                margin-left: 0;
+                margin-top: 0.625em;
+            }
         }
     </style>
 </head>

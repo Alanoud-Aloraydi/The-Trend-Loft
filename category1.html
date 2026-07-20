@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <style>
         h1 { text-align: center; padding: 0.625em; }
-        #navigation { display: flex; justify-content: space-between; background-color: #f9f9f9; align-items: center; padding: 0.625em 1.25em; }
+        #navigation { display: flex; justify-content: space-between; background-color: var(--color-surface); align-items: center; padding: 0.625em 1.25em; }
         #leftnav { width: 33%; display: flex; justify-content: space-around; align-items: center; }
         #rightnav { width: 30%; display: flex; justify-content: space-between; align-items: center; }
         #search { height: 1.6em; padding: 0.3em; }
@@ -19,22 +19,61 @@
         .all { display: flex; justify-content: center; }
         .background { display: flex; justify-content: center; width: 100%; }
         .product-grid { width: 85%; display: flex; flex-wrap: wrap; justify-content: space-between; padding: 1.25em; }
-        .product-item { width: 30%; margin-bottom: 1.25em; border: 0.063em solid #ccc; border-radius: 0.313em; padding: 1.25em; text-align: center; background-color: #f9f9f9; box-sizing: border-box; }
+        .product-item { width: 30%; margin-bottom: 1.25em; border: 0.063em solid var(--color-border); border-radius: 0.313em; padding: 1.25em; text-align: center; background-color: var(--color-surface); box-sizing: border-box; }
         .product-item img { width: 100%; height: auto; }
         .product-item h4 { margin: 0.625em 0; }
-        .product-item p { color: #666; font-size: 0.875em; }
+        .product-item p { color: var(--color-text-secondary); font-size: 0.875em; }
         .pagination { width: 20%; display: flex; justify-content: space-between; margin: auto; margin-top: 1.875em; }
-        .pagination a { color: black; text-decoration: none; font-size: 1em; text-align: center; }
-        .pagination a:hover:not(.active) { background-color: #6d93aa; color: white; width: 1.875em; height: 1.875em; display: flex; align-items: center; justify-content: center; }
-        .copyright { background-color: #f9f9f9; height: 2.5em; display: flex; align-items: center; text-indent: 0.625em; }
+        .pagination a { color: var(--color-text); text-decoration: none; font-size: 1em; text-align: center; }
+        .pagination a:hover:not(.active) { background-color: var(--color-primary); color: white; width: 1.875em; height: 1.875em; display: flex; align-items: center; justify-content: center; }
+        .copyright { background-color: var(--color-surface); height: 2.5em; display: flex; align-items: center; text-indent: 0.625em; }
         .contacts { width: 33%; margin: auto; display: flex; justify-content: space-around; }
         #phone-icon, #email-icon { height: 1.25em; width: 1.25em; margin-right: 0.3em; }
         .phone, .email { display: flex; align-items: center; }
         .filterbackground { display: flex; justify-content: flex-end; padding: 0.625em 1.25em; }
-        #filter { background-color: #ccc; margin-bottom: 1em; text-align: center; margin-right: 8%; padding: 0.5em; }
+        #filter { background-color: var(--color-surface); border: 1px solid var(--color-border); color: var(--color-text); margin-bottom: 1em; text-align: center; margin-right: 8%; padding: 0.5em; }
         .cart-icon img { cursor: pointer; width: 2.5em; height: auto; }
+
+        @media (max-width: 768px) {
+            #navigation { flex-wrap: wrap; row-gap: 0.75em; }
+            #leftnav, #rightnav { width: 100%; justify-content: space-between; flex-wrap: wrap; }
+            .product-grid { width: 100%; }
+            .product-item { width: 47%; }
+            .filterbackground { justify-content: center; margin-right: 0; }
+            #filter { margin-right: 0; }
+            .contacts { width: 90%; flex-wrap: wrap; justify-content: center; gap: 0.75em; }
+        }
+
+        @media (max-width: 480px) {
+            .product-item { width: 100%; }
+            .pagination { width: 60%; }
+        }
     </style>
     <script src="js/script.js" defer></script>
+    <script>
+        const shoes = [
+            { "id": 1, "name": "Leather Boots in Black", "brand": "Givenchy", "description": "Leather Boots in Black", "price": 9800, "image": "images/product2.png", "category": "shoes", "quantity": 1 },
+            { "id": 2, "name": "2003 Vintage Crystal-embellished Strass Heels", "brand": "Rene Caovilla", "description": "2003 Vintage Crystal-embellished Strass Heels", "price": 12000, "image": "images/productreviewed.png", "category": "shoes", "quantity": 1 },
+            { "id": 3, "name": "Naked 105 Padlock Sandals in Laminated Leather", "brand": "Tom Ford", "description": "Naked 105 Padlock Sandals in Laminated Leather", "price": 6750, "image": "images/tomford.png", "category": "shoes", "quantity": 1 }
+        ];
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const cartIcons = document.querySelectorAll(".cart-icon img");
+
+            cartIcons.forEach((cartIcon, index) => {
+                cartIcon.addEventListener("click", () => {
+                    const productId = index + 1;
+                    const product = shoes.find(p => p.id === productId);
+
+                    let shoeCart = JSON.parse(localStorage.getItem("shoeCart")) || [];
+                    shoeCart.push(product);
+                    localStorage.setItem("shoeCart", JSON.stringify(shoeCart));
+
+                    alert("Item added successfully to the cart!");
+                });
+            });
+        });
+    </script>
 </head>
 
 <body>

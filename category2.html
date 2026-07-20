@@ -9,15 +9,12 @@
     <style>
         @font-face {
             font-family: "Vanity";
-            src:\ url\(\.\./fonts/Vanity-Light\.ttf\);
+            src: url(../fonts/Vanity-Light.ttf);
         }
 
         /* Header */
-        head {
-            font-family: "Vanity";
-        }
-
         h1 {
+            font-family: "Vanity";
             text-align: center;
             padding: 0.625em;
         }
@@ -25,7 +22,7 @@
         #navigation {
             display: flex;
             justify-content: space-between;
-            background-color: #f9f9f9;
+            background-color: var(--color-surface);
             align-items: center;
             padding: 0.625em 1.25em;
         }
@@ -92,7 +89,7 @@
         .sidebar {
             margin-bottom: 1.25em;
             border-radius: 0.313em;
-            background-color: #f9f9f9;
+            background-color: var(--color-surface);
             width: 20%;
             padding: 1.25em;
             float: left;
@@ -138,11 +135,11 @@
         .product-item {
             width: 30%;
             margin-bottom: 1.25em;
-            border: 0.063em solid #ccc;
+            border: 0.063em solid var(--color-border);
             border-radius: 0.313em;
             padding: 1.25em;
             text-align: center;
-            background-color: #f9f9f9;
+            background-color: var(--color-surface);
             box-sizing: border-box;
         }
 
@@ -157,7 +154,7 @@
 
         .product-item p,
         pre {
-            color: #666;
+            color: var(--color-text-secondary);
             font-size: 0.875em;
         }
 
@@ -182,19 +179,19 @@
         }
 
         .pagination a {
-            color: black;
+            color: var(--color-text);
             text-decoration: none;
             font-size: 1em;
             text-align: center;
         }
 
         .pagination a:active {
-            background-color: #6d93aa;
+            background-color: var(--color-primary);
             color: white;
         }
 
         .pagination a:hover:not(.active) {
-            background-color: #6d93aa;
+            background-color: var(--color-primary);
             color: white;
             width: 1.875em;
             height: 1.875em;
@@ -204,7 +201,7 @@
         }
 
         .copyright {
-            background-color: #f9f9f9;
+            background-color: var(--color-surface);
             height: 2.5em;
             display: flex;
             align-items: center;
@@ -242,7 +239,9 @@
         }
 
         #filter {
-            background-color: #ccc;
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            color: var(--color-text);
             margin-bottom: 1em;
             text-align: center;
             line-height: 6em;
@@ -251,6 +250,21 @@
 
         .cart-icon img {
             cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            #navigation { flex-wrap: wrap; row-gap: 0.75em; }
+            #leftnav, #rightnav { width: 100%; justify-content: space-between; flex-wrap: wrap; }
+            .sidebar, .product-grid { width: 100%; float: none; }
+            .product-item { width: 47%; }
+            .filterbackground { justify-content: center; }
+            #filter { margin-right: 0; line-height: normal; padding: 0.5em; }
+            .contacts { width: 90%; flex-wrap: wrap; justify-content: center; gap: 0.75em; }
+        }
+
+        @media (max-width: 480px) {
+            .product-item { width: 100%; }
+            .pagination { width: 60%; }
         }
     </style>
     <script>
