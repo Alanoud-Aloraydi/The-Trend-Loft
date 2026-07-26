@@ -2,6 +2,9 @@
 
 A static e-commerce demo site for pre-loved luxury fashion (clothes, bags, shoes), built with plain HTML, CSS, and JavaScript.
 
+> **University:** King Saud University — Information Technology
+> **Course:** IT312 — Web Applications Engineering
+
 ## Features
 - Product browsing by category with sorting (price, A–Z)
 - Cart with quantity controls, stored in `localStorage`
